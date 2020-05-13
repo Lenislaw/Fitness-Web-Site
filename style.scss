@@ -12,6 +12,10 @@ $twitter-color: #00acee;
   font-family: "Poppins", sans-serif;
 }
 
+body {
+  overflow: hidden;
+}
+
 header {
   position: absolute;
   top: 0;
@@ -22,6 +26,7 @@ header {
   align-items: center;
   z-index: 1000;
   padding: 1rem 2rem;
+  overflow: hidden;
   .logo {
     position: relative;
     font-size: 2rem;
@@ -40,40 +45,109 @@ header {
     width: 60px;
     position: relative;
     cursor: pointer;
-    
+
     .bar {
       &-one {
         position: absolute;
         content: "";
-        top:20px;
+        top: 20px;
         width: 100%;
         height: 5px;
-        background-color:$white-color;
+        background-color: $white-color;
       }
       &-two {
         position: absolute;
         content: "";
-        top:30px;
+        top: 30px;
         width: 100%;
         height: 5px;
-        background-color:$white-color;
+        background-color: $white-color;
       }
       &-three {
         position: absolute;
         content: "";
-        top:40px;
+        top: 40px;
         width: 100%;
         height: 5px;
-        background-color:$white-color;
+        background-color: $white-color;
       }
     }
   }
+  .toggle-close {
+    height: 60px;
+    width: 60px;
+    position: relative;
+    cursor: pointer;
+    .bar {
+      &-one {
+        top: 30px;
+        transform: rotate(45deg);
+      }
+      &-two {
+        display: none;
+      }
+      &-three {
+        top: 30px;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+}
+#navigation {
+  position: absolute;
+  top: 9;
+  right: 0;
+  height: 100vh;
+  width: 400px;
+  background: $banner-bg;
+  z-index: 100;
+  transform: translateX(1000px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  ul {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    list-style: none;
+    li {
+      flex: 1;
+      width: 100%;
+
+      a {
+        text-decoration: none;
+        font-size: 2rem;
+        color: $white-color;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      &:hover {
+        background-color: lighten($banner-bg, 10%);
+        cursor: pointer;
+      }
+    }
+  }
+}
+.menu-slide-in {
+  animation: slide-in 1s ease-in-out forwards;
+  overflow: hidden;
+}
+.menu-slide-out {
+  animation: slide-out 0.5s ease-in-out forwards;
+  overflow: hidden;
 }
 
 .container {
   position: relative;
   width: 100%;
-  min-height: 90vh;
+
   padding: 0 100px;
   background: $banner-bg;
   display: flex;
@@ -86,6 +160,7 @@ header {
     align-items: center;
     justify-content: center;
     flex-direction: row;
+    overflow: hidden;
 
     .text-box {
       flex: 1;
@@ -132,7 +207,7 @@ header {
       justify-content: center;
       align-items: center;
       flex: 1;
-      z-index: 100;
+      z-index: 5;
       padding: 0;
       position: relative;
       img {
@@ -242,11 +317,20 @@ header {
   }
 }
 @media (max-width: 1024px) {
+  body {
+    overflow: hidden;
+  }
   header {
     .logo {
       span {
         color: $white-color;
       }
+    }
+  }
+  .navigation {
+    width: 100%;
+    ul {
+      width: 100%;
     }
   }
   .container {
@@ -308,5 +392,21 @@ header {
         }
       }
     }
+  }
+}
+@keyframes slide-in {
+  0% {
+    transform: translateX(1000px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes slide-out {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(1000px);
   }
 }
