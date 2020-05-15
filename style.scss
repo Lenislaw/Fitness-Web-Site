@@ -10,6 +10,7 @@ $twitter-color: #00acee;
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+  --swiper-theme-color: #fff;
 }
 
 body {
@@ -98,7 +99,8 @@ header {
   top: 9;
   right: 0;
   height: 100vh;
-  width: 400px;
+  width: 100vw;
+  max-width: 430px;
   background: $banner-bg;
   z-index: 100;
   transform: translateX(1000px);
@@ -137,23 +139,22 @@ header {
 }
 .menu-slide-in {
   animation: slide-in 1s ease-in-out forwards;
-  overflow: hidden;
 }
 .menu-slide-out {
   animation: slide-out 0.5s ease-in-out forwards;
-  overflow: hidden;
 }
 
 .container {
   position: relative;
   width: 100%;
-
-  padding: 0 100px;
+  height: 100vh;
+  padding: 0 2rem;
   background: $banner-bg;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   overflow: hidden;
+
   .content {
     width: 100%;
     display: flex;
@@ -161,60 +162,163 @@ header {
     justify-content: center;
     flex-direction: row;
     overflow: hidden;
-
-    .text-box {
-      flex: 1;
-      margin: 0 auto;
-      text-align: center;
-      z-index: 2;
-
-      .content-text-box {
-        max-width: 600px;
+    &-home {
+      .text-box {
+        flex: 1;
         margin: 0 auto;
-        h2 {
-          padding: 1rem;
-          color: $white-color;
-          font-size: 3rem;
-        }
-        p {
-          color: $white-color;
-          font-size: 2rem;
-          margin: 2rem auto 3rem auto;
-          z-index: 112;
-        }
-        a {
-          display: block;
-          width: 50%;
+        text-align: center;
+        z-index: 2;
+
+        .content-text-box {
+          max-width: 600px;
           margin: 0 auto;
-          background: $white-color;
-          color: $banner-bg;
-          text-decoration: none;
-          font-size: 1.8rem;
-          text-transform: uppercase;
-          letter-spacing: 1px;
-          padding: 1rem 1.5rem;
-          transition: all 0.5s ease-in;
-          &:hover {
-            transform: scale(1.1);
-            transition: all 1s ease-in;
+          h2 {
+            padding: 1rem;
+            color: $white-color;
+            font-size: 3rem;
+          }
+          p {
+            color: $white-color;
+            font-size: 2rem;
+            margin: 2rem auto 3rem auto;
+            z-index: 112;
+          }
+          a {
+            display: block;
+            width: 50%;
+            margin: 0 auto;
+            background: $white-color;
+            color: $banner-bg;
+            text-decoration: none;
+            font-size: 1.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 1rem 1.5rem;
+            transition: all 0.5s ease-in;
+            &:hover {
+              transform: scale(1.1);
+              transition: all 1s ease-in;
+            }
+          }
+        }
+      }
+      .img-box {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex: 1;
+        z-index: 5;
+        padding: 0;
+        position: relative;
+        img {
+          position: absolute;
+          bottom: 0;
+          height: 90%;
+        }
+      }
+    }
+    &-group {
+      width: 100%;
+      height: 90%;
+      margin-top: 92px;
+      .swiper-container {
+        // background: $banner-bg;
+        width: 100%;
+        height: 600px;
+
+        .swiper-slide {
+          text-align: center;
+          font-size: 18px;
+          margin: auto;
+          /* Center slide text vertically */
+          display: -webkit-box;
+          display: -ms-flexbox;
+          display: -webkit-flex;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-between;
+          height: 80%;
+
+          .type-img {
+            width: 100%;
+            flex: 2;
+            background-color: grey;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img {
+              max-height: auto;
+              width: auto;
+              transform: scale(0.6);
+              transition: all 0.3s linear;
+              &:hover {
+                transition: all 0.3s linear;
+                transform: scale(0.5);
+              }
+            }
+          }
+          .type-footer {
+            flex: 1;
+            width: 100%;
+            background-color: white;
+            border: 1px solid white;
+            .type-name {
+              padding: 1rem;
+              font-size: 2rem;
+            }
+            .reservation-anchor {
+              display: block;
+              margin: 0 auto;
+              width: 50%;
+              height: 4rem;
+              border: 1px solid black;
+              padding: 0.8rem;
+              text-decoration: none;
+              color: black;
+              font-size: 1.5rem;
+              position: relative;
+              overflow: hidden;
+
+              .reservation-paragraf {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+
+                transform: translate(-50%, -50%);
+              }
+              .arrow-right {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-200px, -50%);
+              }
+              &:hover {
+                .reservation-paragraf {
+                  animation: slide-up 0.3s linear forwards;
+                }
+                .arrow-right {
+                  animation: slide-right 0.3s linear forwards;
+                }
+              }
+            }
+          }
+        }
+        .swiper-pagination {
+          
+          .swiper-pagination-bullet {
+            width: 22px;
+            height: 22px;
+            background: #fff;
           }
         }
       }
     }
-    .img-box {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex: 1;
-      z-index: 5;
-      padding: 0;
-      position: relative;
-      img {
-        position: absolute;
-        bottom: 0;
-        height: 90%;
-      }
+    &-personal {
+      height: 100%;
+      border: 1px solid red;
     }
   }
 
@@ -240,42 +344,41 @@ header {
     opacity: 0.15;
     pointer-events: none;
   }
+}
+.social {
+  position: absolute;
+  left: 50%;
+  bottom: 1rem;
+  transform: translateX(-50%);
+  z-index: 1000;
 
-  .social {
-    position: absolute;
-    left: 50%;
-    bottom: 1rem;
-    transform: translateX(-50%);
-    z-index: 1000;
+  ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    li {
+      flex: 1;
+      list-style: none;
+      padding: 1rem;
 
-    ul {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-      width: 300px;
-      li {
-        flex: 1;
-        list-style: none;
-        padding: 1rem;
-
-        a {
-          display: flex;
-          flex-direction: row;
-          justify-content: center;
-          align-items: center;
-          font-size: 3rem;
-          text-decoration: none;
-          color: $white-color;
-          cursor: pointer;
-          i {
-            &:hover {
-              &.facebook {
-                color: $fb-color;
-              }
-              &.twitter {
-                color: $twitter-color;
-              }
+      a {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        font-size: 3rem;
+        text-decoration: none;
+        color: $white-color;
+        cursor: pointer;
+        i {
+          &:hover {
+            &.facebook {
+              color: $fb-color;
+            }
+            &.twitter {
+              color: $twitter-color;
             }
           }
         }
@@ -408,5 +511,21 @@ header {
   }
   100% {
     transform: translateX(1000px);
+  }
+}
+@keyframes slide-up {
+  0% {
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    transform: translate(-50%, -250%);
+  }
+}
+@keyframes slide-right {
+  0% {
+    transform: translate(-200px, -50%);
+  }
+  100% {
+    transform: translate(-50%, -50%);
   }
 }

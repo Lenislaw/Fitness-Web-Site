@@ -3,11 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
     />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css" />
+    <link rel="stylesheet" href="style.css" />
     <script
       src="https://kit.fontawesome.com/27497a9bbb.js"
       crossorigin="anonymous"
@@ -16,7 +18,7 @@
   </head>
   <body>
     <header>
-      <a href="#" class="logo"><span>Fit</span>ness</a>
+      <a id="home" href="#" class="logo"><span>Fit</span>ness</a>
       <div class="toggle" id="hamburger-toggler">
         <div class="bar-one"></div>
         <div class="bar-two"></div>
@@ -25,51 +27,29 @@
     </header>
     <nav id="navigation" class="navigation">
       <ul>
-        <li><a href="#">Group Training</a></li>
-        <li><a href="#">Personal Training</a></li>
-        <li><a href="#">Join us</a></li>
-        <li><a href="#">Contact</a></li>
+        <li id="group"><a href="#">Group Training</a></li>
+        <li id="personal"><a href="#">Personal Training</a></li>
+        <!-- <li id="join-us"><a href="#">Join us</a></li> -->
+        <li id="contact"><a href="#">Contact</a></li>
       </ul>
     </nav>
-    <div class="container">
-      <div class="content">
-        <div class="text-box">
-          <div class="content-text-box">
-            <h2>More then Fitness</h2>
-            <p>
-              Lorem ipsum dolor sit amet consecsstetur, adipisicing elit.
-              Nostrum placeat dolor illsum vel iusto fugiat deserunt tempore a
-              atque, aliquam quas eligendi tenetur recusandae maxime sed quis
-              deleniti ea itaque.
-            </p>
-            <a href="#">Read More</a>
-          </div>
-        </div>
-        <div class="img-box">
-          <img src="imgs/man.png" alt="man" />
-        </div>
-      </div>
 
-      <video src="imgs/bg.mp4" autoplay muted loop type="mp4"></video>
+    <div class="container"></div>
 
-      <div class="social">
-        <ul>
-          <li>
-            <a href="#"
-              ><i class="fab fa-facebook-f facebook social-icon"></i
-            ></a>
-          </li>
-          <li>
-            <a href="#"
-              ><i class="fab fa-instagram instagram social-icon"></i
-            ></a>
-          </li>
-          <li>
-            <a href="#"><i class="fab fa-twitter twitter social-icon"></i></a>
-          </li>
-        </ul>
-      </div>
+    <div class="social">
+      <ul>
+        <li>
+          <a href="#"><i class="fab fa-facebook-f facebook social-icon"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="fab fa-instagram instagram social-icon"></i></a>
+        </li>
+        <li>
+          <a href="#"><i class="fab fa-twitter twitter social-icon"></i></a>
+        </li>
+      </ul>
     </div>
+    <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
     <script type="module" src="app.js"></script>
   </body>
 </html>

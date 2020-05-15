@@ -5,6 +5,7 @@
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+  --swiper-theme-color: #fff;
 }
 
 body {
@@ -106,7 +107,8 @@ header .toggle-close .bar-three {
   top: 9;
   right: 0;
   height: 100vh;
-  width: 400px;
+  width: 100vw;
+  max-width: 430px;
   background: #111;
   z-index: 100;
   -webkit-transform: translateX(1000px);
@@ -173,19 +175,18 @@ header .toggle-close .bar-three {
 .menu-slide-in {
   -webkit-animation: slide-in 1s ease-in-out forwards;
           animation: slide-in 1s ease-in-out forwards;
-  overflow: hidden;
 }
 
 .menu-slide-out {
   -webkit-animation: slide-out 0.5s ease-in-out forwards;
           animation: slide-out 0.5s ease-in-out forwards;
-  overflow: hidden;
 }
 
 .container {
   position: relative;
   width: 100%;
-  padding: 0 100px;
+  height: 100vh;
+  padding: 0 2rem;
   background: #111;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -217,7 +218,7 @@ header .toggle-close .bar-three {
   overflow: hidden;
 }
 
-.container .content .text-box {
+.container .content-home .text-box {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -226,25 +227,25 @@ header .toggle-close .bar-three {
   z-index: 2;
 }
 
-.container .content .text-box .content-text-box {
+.container .content-home .text-box .content-text-box {
   max-width: 600px;
   margin: 0 auto;
 }
 
-.container .content .text-box .content-text-box h2 {
+.container .content-home .text-box .content-text-box h2 {
   padding: 1rem;
   color: #ffffff;
   font-size: 3rem;
 }
 
-.container .content .text-box .content-text-box p {
+.container .content-home .text-box .content-text-box p {
   color: #ffffff;
   font-size: 2rem;
   margin: 2rem auto 3rem auto;
   z-index: 112;
 }
 
-.container .content .text-box .content-text-box a {
+.container .content-home .text-box .content-text-box a {
   display: block;
   width: 50%;
   margin: 0 auto;
@@ -259,14 +260,14 @@ header .toggle-close .bar-three {
   transition: all 0.5s ease-in;
 }
 
-.container .content .text-box .content-text-box a:hover {
+.container .content-home .text-box .content-text-box a:hover {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
   -webkit-transition: all 1s ease-in;
   transition: all 1s ease-in;
 }
 
-.container .content .img-box {
+.container .content-home .img-box {
   height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -285,10 +286,141 @@ header .toggle-close .bar-three {
   position: relative;
 }
 
-.container .content .img-box img {
+.container .content-home .img-box img {
   position: absolute;
   bottom: 0;
   height: 90%;
+}
+
+.container .content-group {
+  width: 100%;
+  height: 90%;
+  margin-top: 92px;
+}
+
+.container .content-group .swiper-container {
+  width: 100%;
+  height: 600px;
+}
+
+.container .content-group .swiper-container .swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  margin: auto;
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  height: 80%;
+}
+
+.container .content-group .swiper-container .swiper-slide .type-img {
+  width: 100%;
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  background-color: grey;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .content-group .swiper-container .swiper-slide .type-img img {
+  max-height: auto;
+  width: auto;
+  -webkit-transform: scale(0.6);
+          transform: scale(0.6);
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+}
+
+.container .content-group .swiper-container .swiper-slide .type-img img:hover {
+  -webkit-transition: all 0.3s linear;
+  transition: all 0.3s linear;
+  -webkit-transform: scale(0.5);
+          transform: scale(0.5);
+}
+
+.container .content-group .swiper-container .swiper-slide .type-footer {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  width: 100%;
+  background-color: white;
+  border: 1px solid white;
+}
+
+.container .content-group .swiper-container .swiper-slide .type-footer .type-name {
+  padding: 1rem;
+  font-size: 2rem;
+}
+
+.container .content-group .swiper-container .swiper-slide .type-footer .reservation-anchor {
+  display: block;
+  margin: 0 auto;
+  width: 50%;
+  height: 4rem;
+  border: 1px solid black;
+  padding: 0.8rem;
+  text-decoration: none;
+  color: black;
+  font-size: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.container .content-group .swiper-container .swiper-slide .type-footer .reservation-anchor .reservation-paragraf {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.container .content-group .swiper-container .swiper-slide .type-footer .reservation-anchor .arrow-right {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-200px, -50%);
+          transform: translate(-200px, -50%);
+}
+
+.container .content-group .swiper-container .swiper-slide .type-footer .reservation-anchor:hover .reservation-paragraf {
+  -webkit-animation: slide-up 0.3s linear forwards;
+          animation: slide-up 0.3s linear forwards;
+}
+
+.container .content-group .swiper-container .swiper-slide .type-footer .reservation-anchor:hover .arrow-right {
+  -webkit-animation: slide-right 0.3s linear forwards;
+          animation: slide-right 0.3s linear forwards;
+}
+
+.container .content-group .swiper-container .swiper-pagination .swiper-pagination-bullet {
+  width: 22px;
+  height: 22px;
+  background: #fff;
+}
+
+.container .content-personal {
+  height: 100%;
+  border: 1px solid red;
 }
 
 .container:before {
@@ -318,7 +450,7 @@ header .toggle-close .bar-three {
   pointer-events: none;
 }
 
-.container .social {
+.social {
   position: absolute;
   left: 50%;
   bottom: 1rem;
@@ -327,7 +459,7 @@ header .toggle-close .bar-three {
   z-index: 1000;
 }
 
-.container .social ul {
+.social ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -344,7 +476,7 @@ header .toggle-close .bar-three {
   width: 300px;
 }
 
-.container .social ul li {
+.social ul li {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
@@ -352,7 +484,7 @@ header .toggle-close .bar-three {
   padding: 1rem;
 }
 
-.container .social ul li a {
+.social ul li a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -372,11 +504,11 @@ header .toggle-close .bar-three {
   cursor: pointer;
 }
 
-.container .social ul li a i:hover.facebook {
+.social ul li a i:hover.facebook {
   color: #3b5998;
 }
 
-.container .social ul li a i:hover.twitter {
+.social ul li a i:hover.twitter {
   color: #00acee;
 }
 
@@ -531,6 +663,50 @@ header .toggle-close .bar-three {
   100% {
     -webkit-transform: translateX(1000px);
             transform: translateX(1000px);
+  }
+}
+
+@-webkit-keyframes slide-up {
+  0% {
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+  }
+  100% {
+    -webkit-transform: translate(-50%, -250%);
+            transform: translate(-50%, -250%);
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+  }
+  100% {
+    -webkit-transform: translate(-50%, -250%);
+            transform: translate(-50%, -250%);
+  }
+}
+
+@-webkit-keyframes slide-right {
+  0% {
+    -webkit-transform: translate(-200px, -50%);
+            transform: translate(-200px, -50%);
+  }
+  100% {
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes slide-right {
+  0% {
+    -webkit-transform: translate(-200px, -50%);
+            transform: translate(-200px, -50%);
+  }
+  100% {
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
   }
 }
 /*# sourceMappingURL=style.css.map */
