@@ -1,7 +1,7 @@
 // UI Controller
 
 const UICtrl = (function () {
-  // Declare UISelectors in object
+  // Declare UISelectors
   const UISelectors = {
     home: "home",
     nav: "nav",
@@ -13,6 +13,17 @@ const UICtrl = (function () {
     navBarLinkContact: "contact",
     hamburgerToggler: "hamburger-toggler",
     socialIcons: ".social-icon",
+    content: ".content",
+    contactState: "contact",
+
+    formNameInput: "input-name",
+    alertName: "alert-name",
+    formPhoneInput: "input-phone",
+    alertPhone: "alert-phone",
+    formEmailInput: "input-email",
+    alertEmail: "alert-email",
+    formSubmitBtn: "form-submit-btn",
+    alertSubmit: "alert-submit",
   };
   // Declare Animations in object
   const UIAnimations = {
@@ -33,11 +44,10 @@ const UICtrl = (function () {
     navBarLinkPersnoalTraining: document.getElementById(
       UISelectors.navBarLinkPersnoalTraining
     ),
-    // navBarLinkJoinUs: document.getElementById(UISelectors.navBarLinkJoinUs),
     navBarLinkContact: document.getElementById(UISelectors.navBarLinkContact),
-
     socialLinks: document.querySelectorAll(UISelectors.socialIcons),
   };
+
   // Declare swiper
   const swiper = () => {
     const mySwiper = new Swiper(".swiper-container", {
@@ -84,6 +94,23 @@ const UICtrl = (function () {
     shakeLinkRemove: (element) => {
       element.classList.remove(UIAnimations.socialAnimation);
     },
+    // Add alert message under inputs
+    alertMessage: (alert, type, input, message) => {
+      alert.classList = `alert alert-${type}`;
+      alert.innerText = message;
+      setTimeout(function () {
+        alert.classList = `alert`;
+      }, 3000);
+      input.value = "";
+    },
+    // Add alert message over submit button
+    submitAlertMessage: (alert, type, message) => {
+      alert.classList = `${type}`;
+      alert.innerText = message;
+      setTimeout(function () {
+        alert.classList = "";
+      }, 2000);
+    },
     // Get UISelectors function
     getUISelectors: () => {
       return UISelectors;
@@ -92,6 +119,7 @@ const UICtrl = (function () {
     getUIHandler: () => {
       return UIHandler;
     },
+
     // Init Slider
     initSlider: () => {
       swiper();

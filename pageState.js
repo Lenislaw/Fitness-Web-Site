@@ -106,16 +106,49 @@ const PageState = (function () {
   const contactState = function () {
     document.querySelector(".container").innerHTML = `
     <div class="content content-contact">
-    <form>
+    <h2 class="heading-form">Contact Us</h2>
+    <p> Fill form to contact with us</p>
+    <form >
         <div class="form-group">
-            <label>Name</label>
-            <input type="text" class="form-control">
+          <div class="form-group-input-label">
+            <input type="text" id="input-name" autocomplete="off" role="presentation" required>
+            <label class="label">
+              <span class="span-text">Name</span>
+            </label>
+            
+          </div>
+            
+          <div id="alert-name" class="alert">Alert </div>
+
         </div>
+        
         <div class="form-group">
-            <label>Emial address</label>
-            <input type="email" class="form-control">
+        <div class="form-group-input-label">
+          <input type="text" id="input-phone" autocomplete="off" role="presentation" required>
+          <label class="label">
+            <span class="span-text">Phone number</span>
+          </label>
+          
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+          
+        <div id="alert-phone" class="alert">Pleast write valid phone nubmer </div>
+
+      </div>
+       
+      <div class="form-group">
+        <div class="form-group-input-label">
+          <input type="email" id="input-email" autocomplete="off" role="presentation" required>
+          <label class="label">
+            <span class="span-text">Email</span>
+          </label>
+        
+        </div>
+        
+      <div id="alert-email" class="alert">Enter valid emial adress </div>
+
+    </div>
+    <div id="alert-submit" class="alert">Contact sended</div>
+    <button type="submit" id="form-submit-btn">Submit</button>
     </form>
     </div>
     `;
@@ -130,9 +163,9 @@ const PageState = (function () {
     personalTraning: function () {
       personalTraningState();
     },
-    joinUs: function () {
-      joinUsState();
-    },
+    // joinUs: function () {
+    //   joinUsState();
+    // },
     contact: function () {
       contactState();
     },

@@ -423,6 +423,132 @@ header .toggle-close .bar-three {
   border: 1px solid red;
 }
 
+.container .content-contact {
+  width: 50%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0 auto;
+  background: white;
+  z-index: 200;
+  padding: 2rem;
+}
+
+.container .content-contact form {
+  width: 50%;
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+.container .content-contact form .form-group .form-group-input-label {
+  position: relative;
+  overflow: hidden;
+}
+
+.container .content-contact form .form-group .form-group-input-label input {
+  width: 100%;
+  height: 100%;
+  padding-top: 2rem;
+  font-size: 1.5rem;
+  border: none;
+  outline: none;
+}
+
+.container .content-contact form .form-group .form-group-input-label input:focus + label .span-text,
+.container .content-contact form .form-group .form-group-input-label input:valid + label .span-text {
+  -webkit-transform: translateY(-120%);
+          transform: translateY(-120%);
+  font-size: 1.2rem;
+  color: #111;
+}
+
+.container .content-contact form .form-group .form-group-input-label input:focus + label:after,
+.container .content-contact form .form-group .form-group-input-label input:valid + label:after {
+  -webkit-transform: translateX(0%);
+          transform: translateX(0%);
+}
+
+.container .content-contact form .form-group .form-group-input-label label {
+  position: absolute;
+  font-size: 1.2rem;
+  bottom: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  border-bottom: 1px solid #111;
+}
+
+.container .content-contact form .form-group .form-group-input-label label::after {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-bottom: 3px solid #37d72f;
+  left: 0;
+  bottom: -1px;
+  -webkit-transform: translateX(-100%);
+          transform: translateX(-100%);
+  -webkit-transition: all 0.4s ease-in-out;
+  transition: all 0.4s ease-in-out;
+}
+
+.container .content-contact form .form-group .form-group-input-label label .span-text {
+  position: absolute;
+  bottom: 0.19rem;
+  font-size: 1.5rem;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.container .content-contact form .form-group .alert {
+  padding: 0.4rem;
+  margin-top: 1rem;
+  text-align: center;
+  opacity: 0;
+}
+
+.container .content-contact form .form-group .alert-error {
+  border: 1px solid #e25055;
+  color: #e25055;
+  border-radius: 5px;
+  opacity: 1;
+}
+
+.container .content-contact form #alert-submit {
+  padding: 0.4rem;
+  margin-top: 1rem;
+  text-align: center;
+  opacity: 0;
+}
+
+.container .content-contact form #alert-submit.error {
+  border: 1px solid #e25055;
+  color: #e25055;
+  border-radius: 5px;
+  opacity: 1;
+}
+
+.container .content-contact form #alert-submit.success {
+  border: 1px solid #37d72f;
+  color: #37d72f;
+  border-radius: 5px;
+  opacity: 1;
+}
+
+.container .content-contact form button {
+  display: block;
+  width: 10rem;
+  padding: 1rem 1.5rem;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  margin: 1rem auto;
+  background-color: #37d72f;
+}
+
 .container:before {
   content: "";
   position: absolute;

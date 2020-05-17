@@ -5,6 +5,11 @@ $primary-color: #37d72f;
 $white-color: #ffffff;
 $fb-color: #3b5998;
 $twitter-color: #00acee;
+$form-span-color: #111;
+$form-border-input-color: #111;
+$form-active-input-color: $primary-color;
+$form-alert-error: #e25055;
+$form-alert-success: #37d72f;
 * {
   margin: 0;
   padding: 0;
@@ -307,7 +312,6 @@ header {
           }
         }
         .swiper-pagination {
-          
           .swiper-pagination-bullet {
             width: 22px;
             height: 22px;
@@ -319,6 +323,115 @@ header {
     &-personal {
       height: 100%;
       border: 1px solid red;
+    }
+    &-contact {
+      width: 50%;
+      flex-direction: column;
+      margin: 0 auto;
+      background: white;
+      z-index: 200;
+      padding: 2rem;
+
+      form {
+        width: 50%;
+        margin-top: 1rem;
+        font-size: 1rem;
+
+        .form-group {
+          .form-group-input-label {
+            position: relative;
+            overflow: hidden;
+
+            input {
+              width: 100%;
+              height: 100%;
+              padding-top: 2rem;
+              font-size: 1.5rem;
+              border: none;
+              outline: none;
+              &:focus + label .span-text,
+              &:valid + label .span-text {
+                transform: translateY(-120%);
+                font-size: 1.2rem;
+                color: $form-span-color;
+              }
+              &:focus + label:after,
+              &:valid + label:after {
+                transform: translateX(0%);
+              }
+            }
+            label {
+              position: absolute;
+              font-size: 1.2rem;
+              bottom: 0%;
+              left: 0%;
+              width: 100%;
+              height: 100%;
+              pointer-events: none;
+              border-bottom: 1px solid $form-border-input-color;
+              &::after {
+                content: "";
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                border-bottom: 3px solid $form-active-input-color;
+                left: 0;
+                bottom: -1px;
+                transform: translateX(-100%);
+                transition: all 0.4s ease-in-out;
+              }
+              .span-text {
+                position: absolute;
+                bottom: 0.19rem;
+                font-size: 1.5rem;
+                transition: all 0.3s ease;
+              }
+            }
+          }
+          .alert {
+            padding: 0.4rem;
+            margin-top: 1rem;
+            text-align: center;
+            opacity: 0;
+            &-error {
+              border: 1px solid $form-alert-error;
+              color: $form-alert-error;
+              border-radius: 5px;
+              opacity: 1;
+            }
+          }
+        }
+        #alert-submit {
+          padding: 0.4rem;
+          margin-top: 1rem;
+          text-align: center;
+          opacity: 0;
+          &.error {
+            border: 1px solid $form-alert-error;
+            color: $form-alert-error;
+            border-radius: 5px;
+            opacity:1;
+          }
+          &.success {
+            border: 1px solid $form-alert-success;
+            color: $form-alert-success;
+            border-radius: 5px;
+            opacity:1;
+          }
+        }
+
+        button {
+          display: block;
+          width: 10rem;
+          padding: 1rem 1.5rem;
+          outline: none;
+          border: none;
+          cursor: pointer;
+          font-size: 1.5rem;
+          margin: 1rem auto;
+          background-color: $primary-color;
+        }
+      }
     }
   }
 
