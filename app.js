@@ -4,8 +4,7 @@ import { page } from "./pageState.js";
 
 const appCtrl = (function (ui, page) {
   // Private
-  //Get window width onload
-  const InitWindowWidth = window.innerWidth;
+
   // Get selectros and Handler form UI and put into variable
   const UISelectors = ui.getUISelectors();
   const UIHandler = ui.getUIHandler();
@@ -13,17 +12,22 @@ const appCtrl = (function (ui, page) {
   // Add Events Listeners
   const LoadEventListeners = () => {
     // Declare handlers
-    let navBarLinks = UIHandler.navBarLinks;
-
-    const navBarLinkGroupTraining = UIHandler.navBarLinkGroupTraning;
-    const navBarLinkPersonalTraining = UIHandler.navBarLinkPersnoalTraining;
-    // const navBarLinkJoinUs = UIHandler.navBarLinkJoinUs;
-    const navBarLinkContact = UIHandler.navBarLinkContact;
-
     const home = UIHandler.home;
-
+    let navBarLinks = UIHandler.navBarLinks;
     let socialLinks = UIHandler.socialLinks;
 
+    // Add event listener to home
+    home.addEventListener("click", (e) => {
+      let state = "";
+
+      if (
+        e.target.id === UISelectors.home ||
+        e.target.parentElement.id === UISelectors.home
+      ) {
+        state = UISelectors.home;
+        changeState(state);
+      }
+    });
     // Add event to hamburger menu
     document
       .getElementById(UISelectors.hamburgerToggler)
@@ -33,34 +37,13 @@ const appCtrl = (function (ui, page) {
 
     navBarLinks = Array.from(navBarLinks);
     navBarLinks.forEach((el) => {
-      el.addEventListener("click", ui.navBarClose);
-    });
-
-    home.addEventListener("click", (e) => {
-      let state = "";
-
-      if (e.target.id === "home" || e.target.parentElement.id === "home") {
-        state = "home";
+      el.addEventListener("click", (e) => {
+        let state = e.target.parentElement.id;
+        ui.navBarClose();
         changeState(state);
-      }
+      });
     });
 
-    navBarLinkGroupTraining.addEventListener("click", (e) => {
-      let state = e.target.parentElement.id;
-      changeState(state);
-    });
-    navBarLinkPersonalTraining.addEventListener("click", (e) => {
-      const state = e.target.parentElement.id;
-      changeState(state);
-    });
-    // navBarLinkJoinUs.addEventListener("click", (e) => {
-    //   const state = e.target.parentElement.id;
-    //   changeState(state);
-    // });
-    navBarLinkContact.addEventListener("click", (e) => {
-      const state = e.target.parentElement.id;
-      changeState(state);
-    });
     // Add Event Listener to social links
     socialLinks = Array.from(socialLinks);
     // Event Listener for Add animation
@@ -80,7 +63,14 @@ const appCtrl = (function (ui, page) {
   };
   // Add event listeners for dynamic content
   const LoadDynamicEventListeners = (state) => {
-    // Handlers for elements from contact
+    // Handler of button on home state
+    const homeReadMore = document.getElementById(UISelectors.homeReadMore);
+
+    // Handlers for read more inputs in group training state
+    const modal = document.getElementById(UISelectors.modal);
+    let readMoreBtns = document.querySelectorAll(UISelectors.readMore);
+    const stateAboutUs = UISelectors.navBarLinkAboutUs;
+    // Handlers for elements from contact state
     const content = document.querySelector(UISelectors.content);
     const submitAlert = document.getElementById(UISelectors.alertSubmit);
     const inputName = document.getElementById(UISelectors.formNameInput);
@@ -89,16 +79,60 @@ const appCtrl = (function (ui, page) {
     const alertPhone = document.getElementById(UISelectors.alertPhone);
     const inputEmail = document.getElementById(UISelectors.formEmailInput);
     const alertEmail = document.getElementById(UISelectors.alertEmail);
-    console.log(inputEmail);
-    console.log(alertEmail);
-    //Chose website state
+
+    // Chose website state
+
+    // Events for homeState
     if (state === UISelectors.home) {
+      const state = stateAboutUs;
+
+      homeReadMore.addEventListener("click", () => {
+        changeState(state);
+      });
     }
+    // Events for aboutUsState
+    if (state === UISelectors.navBarLinkAboutUs) {
+      console.log("No Events to load yet");
+    }
+    // Events for groupTrainingState
     if (state === UISelectors.navBarLinkGroupTraning) {
+      readMoreBtns = Array.from(readMoreBtns);
+      readMoreBtns.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          console.log(e.target.parentElement);
+          // Get element clicked id number
+          let idArr;
+          if (e.target.id === "") {
+            idArr = e.target.parentElement.id.split("-");
+          } else {
+            idArr = e.target.id.split("-");
+          }
+          // Convert from string into number
+          const id = +idArr[1];
+
+          // Callback returns description by id then create modal
+          ui.createModal(page.getChosenDescription(id));
+          // Open modal window
+          ui.openModal(modal);
+        });
+      });
+      // Event to close modal when clicked outside of modal
+      window.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          console.log("close");
+          ui.clickOutside(modal);
+        }
+        if (e.target.id === UISelectors.closeModalBtn) {
+          ui.closeModal(modal);
+        }
+      });
     }
+    // Events for personalTrainingState
     if (state === UISelectors.navBarLinkPersnoalTraining) {
+      console.log("No Events to load");
     }
-    if (state === UISelectors.contactState) {
+    // Events for contactState
+    if (state === UISelectors.navBarLinkContact) {
       // Add event listener
       content.addEventListener("focusout", (e) => {
         if (e.target.id === UISelectors.formNameInput) {
@@ -129,7 +163,7 @@ const appCtrl = (function (ui, page) {
         if (e.keyCode === 13) {
           window.event.returnValue = false;
           const type = "error";
-          const message = "You can submit only by click button!";
+          const message = "You can submit only by click Submit!";
           ui.submitAlertMessage(submitAlert, type, message);
         }
       });
@@ -149,7 +183,7 @@ const appCtrl = (function (ui, page) {
             const type = "success";
             const message = "Contact sended successful!";
 
-            // Show alert function
+            // Show alert function for submit button
             ui.submitAlertMessage(submitAlert, type, message);
 
             // Clear inputs
@@ -201,53 +235,34 @@ const appCtrl = (function (ui, page) {
     const re = /^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$/;
 
     if (!re.test(inputEmailValue)) {
-      const message = "Please enter valid emial adres";
+      const message = "Please enter valid emial adress";
       const type = "error";
       ui.alertMessage(alert, type, input, message);
-
-      // Name must be between 2 and 10 characters!
     } else {
       console.log("VALID");
     }
   };
 
-  // const currentWidnowWidth = () => {
-  //   const currentWidnowWidth = window.innerWidth;
-
-  //   return currentWidnowWidth;
-  // };
-  // const choseSliderSize = (windowWidth) => {
-  //   if (windowWidth < 651) {
-  //     ui.initSlider(1);
-  //   }
-  //   if (windowWidth > 650) {
-  //     ui.initSlider(2);
-  //   }
-  //   if (windowWidth > 1024) {
-  //     ui.initSlider(3);
-  //   }
-
-  //   if (windowWidth > 1400) {
-  //     ui.initSlider(4);
-  //   }
-  // };
+  // Change state function  mby switch here?
   const changeState = (state) => {
+    if (state === UISelectors.navBarLinkAboutUs) {
+      page.aboutUs();
+      LoadDynamicEventListeners(state);
+    }
     if (state === UISelectors.home) {
       page.home();
       LoadDynamicEventListeners(state);
     }
     if (state === UISelectors.navBarLinkGroupTraning) {
       page.groupTraning();
-      ui.initSlider();
+      ui.initSliderGroup();
+      LoadDynamicEventListeners(state);
     }
     if (state === UISelectors.navBarLinkPersnoalTraining) {
       page.personalTraning();
+      ui.initSliderPorsonal();
       LoadDynamicEventListeners(state);
     }
-    // if (state === UISelectors.navBarLinkJoinUs) {
-    //   page.joinUs();
-    //   LoadEventListeners();
-    // }
     if (state === UISelectors.navBarLinkContact) {
       page.contact();
       LoadDynamicEventListeners(state);
@@ -256,10 +271,10 @@ const appCtrl = (function (ui, page) {
 
   // Public
   return {
+    // Application initiation
     init: function () {
-      page.home();
       LoadEventListeners();
-      LoadDynamicEventListeners("contact");
+      changeState(UISelectors.home);
     },
   };
 })(ui, page);
