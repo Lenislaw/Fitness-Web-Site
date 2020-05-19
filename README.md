@@ -14,6 +14,7 @@ Additional tools:
 
 - animate.css (https://animate.style/)
 - fontawsome (https://fontawesome.com/)
+- swiper.js (https://swiperjs.com/)
 
 ## General info
 
