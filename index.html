@@ -3,13 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <meta
+      name="Description"
+      content="Non-comercial training website. I am showing my skill's."
+    />
+    <meta name="author" content="Łukasz Leni Zembrowski" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"
     />
     <link rel="stylesheet" href="https://unpkg.com/swiper/css/swiper.min.css" />
     <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/x-icon" href="imgs/favicon-small.ico" />
     <script
       src="https://kit.fontawesome.com/27497a9bbb.js"
       crossorigin="anonymous"
@@ -25,13 +30,15 @@
         <div class="bar-three"></div>
       </div>
     </header>
-    <nav id="navigation" class="navigation">
-      <ul>
-        <li id="group"><a href="#">Group Training</a></li>
-        <li id="personal"><a href="#">Personal Training</a></li>
-        <!-- <li id="join-us"><a href="#">Join us</a></li> -->
-        <li id="contact"><a href="#">Contact</a></li>
-      </ul>
+    <nav class="navigation">
+      <div id="rel">
+        <ul id="navigation">
+          <li id="about"><a href="#">About Me</a></li>
+          <li id="group"><a href="#">Group Training</a></li>
+          <li id="personal"><a href="#">Personal Training</a></li>
+          <li id="contact"><a href="#">Contact</a></li>
+        </ul>
+      </div>
     </nav>
 
     <div class="container"></div>
@@ -39,16 +46,23 @@
     <div class="social">
       <ul>
         <li>
-          <a href="#"><i class="fab fa-facebook-f facebook social-icon"></i></a>
+          <a href="http://facebook.com" target="_blank"
+            ><i class="fab fa-facebook-f facebook social-icon"></i
+          ></a>
         </li>
         <li>
-          <a href="#"><i class="fab fa-instagram instagram social-icon"></i></a>
+          <a href="http://instagram.com/" target="_blank"
+            ><i class="fab fa-instagram instagram social-icon"></i
+          ></a>
         </li>
         <li>
-          <a href="#"><i class="fab fa-twitter twitter social-icon"></i></a>
+          <a href="http://twitter.com/" target="_blank"
+            ><i class="fab fa-twitter twitter social-icon"></i
+          ></a>
         </li>
       </ul>
     </div>
+
     <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
     <script type="module" src="app.js"></script>
   </body>
