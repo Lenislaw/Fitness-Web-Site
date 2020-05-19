@@ -1,21 +1,33 @@
 // UI Controller
-
 const UICtrl = (function () {
+  // Utilities classes
+  const UtilitiesClass = {
+    block: "block",
+    overflowHidden: "hidden",
+  };
   // Declare UISelectors
   const UISelectors = {
+    body: "body",
     home: "home",
-    nav: "nav",
+    nav: "navigation",
+    rel: "rel",
     navBarLinks: "nav ul li",
     sideNavToggle: ".toggle",
+    navBarLinkAboutUs: "about",
     navBarLinkGroupTraning: "group",
     navBarLinkPersnoalTraining: "personal",
-    // navBarLinkJoinUs: "join-us",
     navBarLinkContact: "contact",
     hamburgerToggler: "hamburger-toggler",
     socialIcons: ".social-icon",
+    homeReadMore: "home-read-more",
     content: ".content",
+    groupState: "group",
+    slider: ".swiper-container",
+    swiperPagination: ".swiper-pagination",
+    readMore: ".read-more",
+    modal: "modal",
+    closeModalBtn: "close-btn",
     contactState: "contact",
-
     formNameInput: "input-name",
     alertName: "alert-name",
     formPhoneInput: "input-phone",
@@ -34,10 +46,13 @@ const UICtrl = (function () {
   };
   // Declare Handlers in object
   const UIHandler = {
+    body: document.querySelector(UISelectors.body),
     home: document.getElementById(UISelectors.home),
-    nav: document.querySelector(UISelectors.nav),
+    nav: document.getElementById(UISelectors.nav),
+    rel: document.getElementById(UISelectors.rel),
     toggle: document.querySelector(UISelectors.sideNavToggle),
     navBarLinks: document.querySelectorAll(UISelectors.navBarLinks),
+    navBarLinkAboutUs: document.getElementById(UISelectors.navBarLinkAboutUs),
     navBarLinkGroupTraning: document.getElementById(
       UISelectors.navBarLinkGroupTraning
     ),
@@ -49,23 +64,34 @@ const UICtrl = (function () {
   };
 
   // Declare swiper
-  const swiper = () => {
-    const mySwiper = new Swiper(".swiper-container", {
-      slidesPerView: 4,
+  const swiperGroup = () => {
+    const mySwiper = new Swiper(UISelectors.slider, {
+      slidesPerView: "auto",
       spaceBetween: 30,
       pagination: {
-        el: ".swiper-pagination",
+        el: UISelectors.swiperPagination,
         type: "bullets",
         clickable: true,
         progressbarOpposite: true,
         dynamicMainBullets: 10,
       },
-      autoplay: false,
+      autoplay: true,
+    });
+  };
+  const swiperPersonal = () => {
+    var swiper = new Swiper(UISelectors.slider, {
+      pagination: {
+        el: UISelectors.swiperPagination,
+        clickable: true,
+      },
+      autoplay: true,
     });
   };
   //  Declare handlers into variables
   const nav = UIHandler.nav;
   const toggle = UIHandler.toggle;
+  const body = UIHandler.body;
+  const rel = UIHandler.rel;
   return {
     // Navigation function
     navBarSlide: function () {
@@ -74,10 +100,14 @@ const UICtrl = (function () {
         nav.classList.remove(UIAnimations.menuSlideOut);
         nav.classList.add(UIAnimations.menuSlideIn);
         toggle.classList.add(UIAnimations.toggleClose);
+        rel.classList.toggle(UtilitiesClass.block);
+        body.classList.toggle(UtilitiesClass.overflowHidden);
       } else {
         nav.classList.remove(UIAnimations.menuSlideIn);
         nav.classList.add(UIAnimations.menuSlideOut);
         toggle.classList.remove(UIAnimations.toggleClose);
+        rel.classList.toggle(UtilitiesClass.block);
+        body.classList.toggle(UtilitiesClass.overflowHidden);
       }
     },
     // Hide Navigation function
@@ -85,6 +115,8 @@ const UICtrl = (function () {
       nav.classList.remove(UIAnimations.menuSlideIn);
       nav.classList.add(UIAnimations.menuSlideOut);
       toggle.classList.remove(UIAnimations.toggleClose);
+      rel.classList.toggle(UtilitiesClass.block);
+      body.classList.toggle(UtilitiesClass.overflowHidden);
     },
     // Add Animation to Social Icon
     shakeLinkAdd: (element) => {
@@ -93,6 +125,22 @@ const UICtrl = (function () {
     // Remove Animation from Social Icon
     shakeLinkRemove: (element) => {
       element.classList.remove(UIAnimations.socialAnimation);
+    },
+    // Create modal content
+    createModal: (description) => {
+      modal.innerHTML = description;
+    },
+    // Open modal
+    openModal: (modal) => {
+      modal.classList.toggle(UtilitiesClass.block);
+    },
+    // Close modal by click X
+    closeModal: (modal) => {
+      modal.classList.toggle(UtilitiesClass.block);
+    },
+    // Close modal by click outside modal
+    clickOutside: (modal) => {
+      modal.classList.toggle(UtilitiesClass.block);
     },
     // Add alert message under inputs
     alertMessage: (alert, type, input, message) => {
@@ -109,7 +157,7 @@ const UICtrl = (function () {
       alert.innerText = message;
       setTimeout(function () {
         alert.classList = "";
-      }, 2000);
+      }, 3000);
     },
     // Get UISelectors function
     getUISelectors: () => {
@@ -120,9 +168,13 @@ const UICtrl = (function () {
       return UIHandler;
     },
 
-    // Init Slider
-    initSlider: () => {
-      swiper();
+    // Init Slider in GroupState
+    initSliderGroup: () => {
+      swiperGroup();
+    },
+    // Init Slider in PersonalState
+    initSliderPorsonal: () => {
+      swiperPersonal();
     },
   };
 })();
